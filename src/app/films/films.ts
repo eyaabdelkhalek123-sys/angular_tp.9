@@ -3,6 +3,7 @@ import { Component , OnInit } from '@angular/core';
 import { Film } from '../model/film.model';
 import { FilmService } from '../services/film.service';
 import { RouterLink } from '@angular/router';
+import { Auth } from '../services/auth';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class Films implements OnInit {
 
   films : Film[]; //le tableau de films 
 
-  constructor(private filmService : FilmService)
+  constructor(private filmService : FilmService,
+              public authService: Auth)
   {
       this.films = filmService.listeFilm();
   }

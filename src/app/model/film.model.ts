@@ -7,4 +7,5 @@ export class Film
     genre! : Genre ;
     datesortie! : Date;
     rating! : number;
+    email! : String;
 } 

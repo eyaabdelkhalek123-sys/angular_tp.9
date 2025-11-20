@@ -2,7 +2,7 @@
     <div>
         <h2>Modifier un Film:</h2>
     </div>
-    <form>
+    <!-- <form>
         <div  class="col-sm-2 col-md-2 col-lg-2">
             <label>Id</label>
             <input readonly type="text" [(ngModel)]="currentFilm.id" name="id" class="form-control">
@@ -31,5 +31,82 @@
         <div class="mt-2">
             <button type="submit" (click)="updateFilm()" class="btn btn-success">Modifier</button>
         </div>
+    </form> -->
+    <form [formGroup]="myForm" (ngSubmit)="updateFilm()">
+
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Id</label>
+            <input type="text" formControlName="id" name="id" class="form-control">
+        </div>
+        @if (myForm.controls['id'].hasError('required') && myForm.controls['id'].touched)
+        {
+            <span class="text-danger">l'identifiant est obligatoire</span>
+        }
+
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Nom</label>
+            <input type="text" formControlName="nom" name="nom" class="form-control">
+        </div>
+        @if (myForm.controls['nom'].hasError('required') && myForm.controls['nom'].touched)
+        {
+            <span class="text-danger">le nom est obligatoire</span>
+        }
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Genre</label>
+            <select class="form-control form-control-lg" id="idgen" name="idgen" formControlName="genreId">
+                @for(gen of genres; track gen.idgen){
+                <option [value]="gen.idgen"> {{gen.nomgen}} </option>
+                }
+            </select>
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date de Sortie</label>
+            <input type="date" formControlName="datesortie" name="datesortie" class="form-control">
+        </div>
+        @if (myForm.controls['datesortie'].hasError('required') && myForm.controls['datesortie'].touched)
+        {
+            <span class="text-danger">la date est obligatoire</span>
+        }
+
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>IMDb</label>
+            <input type="number" formControlName="rating" name="rating" class="form-control">
+        </div>
+        @if (myForm.controls['rating'].hasError('max') && myForm.controls['rating'].touched)
+        {
+            <span class="text-danger">le rating ne peut pas depasser 10</span>
+        }
+        
+
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>e-mail</label>
+            <input type="email" formControlName="email" name="email" class="form-control">
+        </div>
+        @if (myForm.controls['email'].hasError('required') && myForm.controls['email'].touched)
+        {
+            <span class="text-danger">le mail est obligatoire</span>
+        }
+        @if (myForm.controls['email'].hasError('email') && myForm.controls['email'].touched)
+        {
+            <span class="text-danger">le mail non valide</span>
+        }
+
+        <div class="mt-2">
+            <button type="submit" [disabled]="myForm.invalid" (click)="updateFilm()" class="btn btn-success">Ajouter</button>
+        </div>
     </form>
 </div>
+
+<style>
+    .btn-success 
+    {
+        background-color: rgb(77, 98, 3); 
+        border-color: rgb(191, 255, 0);    
+        color: white;               
+    }
+
+    .container 
+    { margin-top: 50px; }
+</style>

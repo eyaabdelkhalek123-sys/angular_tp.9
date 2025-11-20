@@ -2,8 +2,8 @@
   <div class="container-fluid"> 
     <a class="navbar-brand" href="#">Pathé Cinema</a> 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"  
-data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
- aria-expanded="false" aria-label="Toggle navigation"> 
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+      aria-expanded="false" aria-label="Toggle navigation"> 
       <span class="navbar-toggler-icon"></span> 
     </button> 
     <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
@@ -16,8 +16,11 @@ data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
           role="button" data-bs-toggle="dropdown" aria-expanded="false">Films</a> 
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> 
-            <li><a class="dropdown-item" routerLink="add-film">Ajouter</a></li> 
+            @if(authService.isAdmin()) 
+            { <li><a class="dropdown-item"  routerLink="/add-film">Ajouter</a></li> }             
             <li><a class="dropdown-item" href="#">Lister</a></li> 
+            <li><a class="dropdown-item"  routerLink="/rechercheParGenre" >Recherche Par Genre</a></li> 
+            <li><a class="dropdown-item"  routerLink="/rechercheParNom" >Recherche Par Nom</a></li> 
           </ul> 
         </li> 
       </ul> 
@@ -25,10 +28,13 @@ data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       <ul class="navbar-nav ms-auto m-2" >       
         <li class="nav-item dropdown"> 
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
-            role="button" data-bs-toggle="dropdown" aria-expanded="false">[username]</a> 
+            role="button" data-bs-toggle="dropdown" aria-expanded="false">[{{authService.loggedUser}}]</a> 
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> 
-            <li><a class="dropdown-item" href="#">Login</a></li> 
-            <li><a class="dropdown-item" href="#">Logout</a></li> 
+            <p>pas de compte?<a routerLink="/register" mb-4 >S'inscrire</a></p> 
+            @if(!authService.isloggedIn) 
+              { <li><a class="dropdown-item" routerLink="/login">Login</a></li> }
+            @else 
+            { <li><a class="dropdown-item" (click) = "onLogout()">Logout</a></li> }
             <li><a class="dropdown-item" href="#">Profile</a></li> 
           </ul> 
         </li> 
