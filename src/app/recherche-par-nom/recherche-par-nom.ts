@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchFilterPipe } from '../search-filter-pipe';
 import { Genre } from '../model/genre.model';
 import { Router, RouterLink } from '@angular/router';
+import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-recherche-par-nom',
@@ -27,6 +28,7 @@ export class RechercheParNom implements OnInit
   SearchTerm! : string;
    
   constructor(private filmService : FilmService,
+              public authService : Auth,
               private router : Router
   ) {} 
  

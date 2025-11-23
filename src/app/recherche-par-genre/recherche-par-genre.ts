@@ -5,6 +5,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Genre } from '../model/genre.model';
 import { Router, RouterLink } from '@angular/router';
+import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-recherche-par-genre',
@@ -19,6 +20,7 @@ export class RechercheParGenre implements OnInit{
   IdGenre! : number;
 
   constructor(private filmService : FilmService,
+              public authService : Auth,
               private router : Router
   ){}
 

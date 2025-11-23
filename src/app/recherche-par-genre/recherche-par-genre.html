@@ -34,8 +34,11 @@
                         <td>{{movie.genre.nomgen}}</td>
                         <td>{{movie.datesortie | date:'dd/MM/yyyy'}}</td>
                         <td>{{movie.rating}}</td>
-                        <td><a class="btn btn-danger" (click)="supprimerFilm(movie)">Supprimer</a></td>  
-                        <td><a class="btn btn-success" [routerLink]="['/update-film',movie.id]">Modifier</a></td>
+                        @if (authService.isAdmin())
+                        {
+                            <td><a class="btn btn-danger" (click)="supprimerFilm(movie)">Supprimer</a></td>  
+                            <td><a class="btn btn-success" [routerLink]="['/update-film',movie.id]">Modifier</a></td>
+                        }
                     </tr>
                 </tbody>
                 }

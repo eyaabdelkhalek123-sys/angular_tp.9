@@ -18,9 +18,10 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> 
             @if(authService.isAdmin()) 
             { <li><a class="dropdown-item"  routerLink="/add-film">Ajouter</a></li> }             
-            <li><a class="dropdown-item" href="#">Lister</a></li> 
+            <li><a class="dropdown-item" routerLink="/films" >Lister</a></li> 
             <li><a class="dropdown-item"  routerLink="/rechercheParGenre" >Recherche Par Genre</a></li> 
             <li><a class="dropdown-item"  routerLink="/rechercheParNom" >Recherche Par Nom</a></li> 
+            <li><a class="dropdown-item"  routerLink="/listeGenres" >Liste des Genres</a></li>
           </ul> 
         </li> 
       </ul> 
@@ -30,7 +31,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
             role="button" data-bs-toggle="dropdown" aria-expanded="false">[{{authService.loggedUser}}]</a> 
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> 
-            <p>pas de compte?<a routerLink="/register" mb-4 >S'inscrire</a></p> 
+            <!-- <p>pas de compte?<a routerLink="/register" mb-4 >S'inscrire</a></p>  -->
             @if(!authService.isloggedIn) 
               { <li><a class="dropdown-item" routerLink="/login">Login</a></li> }
             @else 

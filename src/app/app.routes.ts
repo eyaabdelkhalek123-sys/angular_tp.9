@@ -8,6 +8,7 @@ import { Register } from './register/register';
 import { Login } from './login/login';
 import { Forbidden } from './forbidden/forbidden';
 import { filmGuard } from './film-guard';
+import { ListeGenres } from './liste-genres/liste-genres';
 
 export const routes: Routes = [
 
@@ -18,7 +19,8 @@ export const routes: Routes = [
     {path: "rechercheParNom", component : RechercheParNom},
     {path: "register", component : Register}, 
     {path: "login", component : Login }, 
-    {path:  'app-forbidden', component: Forbidden}, 
+    {path:  "app-forbidden", component : Forbidden}, 
+    {path: "listeGenres", component : ListeGenres}, 
     {path: "", redirectTo : "films" , pathMatch : "full"},  //direction vers films par defaut 
 
 ];

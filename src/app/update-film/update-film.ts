@@ -30,7 +30,7 @@ export class UpdateFilm implements OnInit{
     
     this.genres= this.filmService.listeGenres();
     this.currentFilm = this.filmService.consulterFilm(this.activatedRoute.snapshot.params['id']); 
-    this.updateGenId=this.currentFilm.genre.idgen;
+    this.updateGenId=this.currentFilm.genre.idgen!;
 
     console.log(this.activatedRoute.snapshot.params['id']);
     console.log(this.currentFilm);

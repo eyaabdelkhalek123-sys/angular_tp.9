@@ -1,5 +1,5 @@
 export class Genre 
 { 
-    idgen! : number;
+    idgen! : number | null;
     nomgen! : string; 
 } 

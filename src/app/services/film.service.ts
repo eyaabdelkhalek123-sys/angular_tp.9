@@ -88,7 +88,7 @@ export class FilmService {
 
     consulterGenre(id:number): Genre
     {     
-          return this.genres.find(gen => gen.idgen  == id)!; 
+      return this.genres.find(gen => gen.idgen  == id)!; 
     } 
 
     rechercheParGenre(idgen : number) : Film[]
@@ -109,4 +109,12 @@ export class FilmService {
     {
       return this.films.filter(f => f.nom.toLowerCase().includes(nom.toLowerCase()));
     } 
+
+    ajouterGenre(genre: Genre): Genre[] {
+      const existe = this.genres.some(g => g.idgen === genre.idgen);
+      if (!existe) {
+        this.genres.push(genre);
+      }
+      return this.genres;
+    }
 }
